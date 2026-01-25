@@ -46,7 +46,7 @@
 		</data>
 		<key>Frameworks/App.framework/App</key>
 		<data>
-		g9z6t0pjiC6l3HBGFYtmET4sUoc=
+		ai8rlQdhYzw6vsFS7+kg8wmC8PY=
 		</data>
 		<key>Frameworks/App.framework/Info.plist</key>
 		<data>
@@ -54,11 +54,11 @@
 		</data>
 		<key>Frameworks/App.framework/_CodeSignature/CodeResources</key>
 		<data>
-		aV0ba4pVd5izXMoZb/ZgMQaBszA=
+		gFADhUpxxeTvx1PHJnZKZn+gX98=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
 		<data>
-		6pxD1TMaNvzRo+uOe7FfTPiOXmg=
+		HNhv4k4erRNRyBYO/guF9LRAmOI=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
 		<data>
@@ -66,7 +66,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/NOTICES.Z</key>
 		<data>
-		qU4mO3J/uWeJEzvUmWi01bDBSH4=
+		J9IJhNBNWj83FzVkztCJQxm72dU=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/NativeAssetsManifest.json</key>
 		<data>
@@ -235,6 +235,18 @@
 		<key>Frameworks/App.framework/flutter_assets/assets/checkcircle.png</key>
 		<data>
 		4SeDm9RJSTvW/OSZ/+nA2Cj1Wrs=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/checkmark-circle-blur.png</key>
+		<data>
+		USf9hwCXWIPBn4v555CrGigqW8U=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/checkmark-circle-dark.png</key>
+		<data>
+		ETobx5adb0t9jKpUf3b9mEsg+Ys=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/checkmark-circle-white.png</key>
+		<data>
+		Jjt9K/L0b+ycmO3xPsLQiqHyfcI=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/checkmark-circle.png</key>
 		<data>
@@ -511,6 +523,22 @@
 		<key>Frameworks/App.framework/flutter_assets/assets/gratitude.png</key>
 		<data>
 		rCviGdvUAPxLsozZhrLIIZMVxsw=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/gratitude_rectangle1.png</key>
+		<data>
+		gJWr6FTNmMrU5nJZNozWIXkFIUM=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/gratitude_rectangle2.png</key>
+		<data>
+		C/jGaExCC6iLM3BZi6/y8D0ukYM=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/gratitude_rectangle3.png</key>
+		<data>
+		c91hYJZtS1WR+5c20tCaVLXrHSE=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/gratitude_rectangle4.png</key>
+		<data>
+		2HhSZjFH+/EOWskhMdHTFumsClc=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/grounded_mind.png</key>
 		<data>
@@ -1070,7 +1098,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/kernel_blob.bin</key>
 		<data>
-		VDi+muDoWTTCigStOs0RVwQDAf4=
+		sZgw+4a1a1iSlTuMF+hsAAdtWMw=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -1090,7 +1118,7 @@
 		</data>
 		<key>Frameworks/Flutter.framework/Flutter</key>
 		<data>
-		c+vMXJQp8IAinUN3wWTM4HtwfQI=
+		q7Vz/ur64MbVzWOpebqX/XoWdlE=
 		</data>
 		<key>Frameworks/Flutter.framework/Headers/Flutter.h</key>
 		<data>
@@ -1198,7 +1226,7 @@
 		</data>
 		<key>Frameworks/shared_preferences_foundation.framework/shared_preferences_foundation</key>
 		<data>
-		qGZBLZONTlW3lVLynnIw9bBI77g=
+		R6vz+Qt/ZJSMghXCjvZ7SVzdW9g=
 		</data>
 		<key>Frameworks/shared_preferences_foundation.framework/shared_preferences_foundation_privacy.bundle/Info.plist</key>
 		<data>
@@ -1218,7 +1246,7 @@
 		</data>
 		<key>Frameworks/sqflite_darwin.framework/sqflite_darwin</key>
 		<data>
-		WdaIOvjcMIcm7YuGRQU/03oEog8=
+		CZoyplEhojgJFD+iDWj9wySaN0o=
 		</data>
 		<key>Frameworks/sqflite_darwin.framework/sqflite_darwin_privacy.bundle/Info.plist</key>
 		<data>
@@ -1230,7 +1258,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		akJHBNIPESSOrUoN71OCI25BgMw=
+		hqchtVyPfwWUJjO0YVR7+VLls/g=
 		</data>
 		<key>Nunito-Black.ttf</key>
 		<data>
@@ -1302,11 +1330,11 @@
 		</data>
 		<key>Runner.debug.dylib</key>
 		<data>
-		jQRf1aW2a6uVXLA1QzJdbb1SvIc=
+		U3R5kKYSFXeP04HwaA80s/EnjOk=
 		</data>
 		<key>__preview.dylib</key>
 		<data>
-		x7VxxQnE49QvN9B9XVEKroAznJQ=
+		k4cXO+XVm/dkwY0/Cex83paHIIs=
 		</data>
 		<key>permission_handler_apple_privacy.bundle/Info.plist</key>
 		<data>
@@ -1393,7 +1421,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			0imPEHUjNBgiC+ukw0E1pOYS+9uzBtcXCPLYFO58Pjo=
+			0r7MSzQfchNqnfiYw9NgBgXDB5IlUtQsDUE4FOJ1vNg=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/Info.plist</key>
@@ -1407,14 +1435,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			z3e85xssFg2+1ryOItv1m+LBj+KgCheKBEqrOgPUPr8=
+			gNPYtrwPsgVFzT7Fz/ZrLz3BQMK4fYj+4W3EQhItzW8=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			4VwFNauAEEK9WnC+qFcEJshyH9fPgxWKniJE+2ZTUTM=
+			0vZoOyP93Gn75S8D0v3s+7FQZk7XgqJrjwc1QbpyPdU=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
@@ -1428,7 +1456,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			rjkxNoUgqxb+/87iQkI35TqBM985tMxgKlGh+3Z0R/A=
+			a5MN048+1OQ3QEyZPnJFj+4rno6eF4gmdJuqwVqSiZY=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/NativeAssetsManifest.json</key>
@@ -1723,6 +1751,27 @@
 			<key>hash2</key>
 			<data>
 			GTJ93CFQSP6UDYJOYQLemoHo9Zkzf0evsuXPpRHrG4E=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/checkmark-circle-blur.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			lCnnQVL2hSReFBfR20STMC0C1tXntFDrccuHK9bCNdY=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/checkmark-circle-dark.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Fs53pOVfQ78DXDd62Shf2GRbKb1hM75PAMWzsi9bw1M=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/checkmark-circle-white.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			YJo2tWaYNQFhHLneB4Q+P2Yc44wtrFEDclK3WjfUGQ0=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/assets/checkmark-circle.png</key>
@@ -2206,6 +2255,34 @@
 			<key>hash2</key>
 			<data>
 			sNSx6YJHTPRk4kbnqJe6fpc4eanMdAcvElT9mUSTbsU=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/gratitude_rectangle1.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			lQf0cxGYxTGJgX7+si/ukK7JOBL/Yl6oV9hoeuyNRx0=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/gratitude_rectangle2.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			mHjDGc7Ds3i8LKfDVYB2Xm5mM2R8FnADOKJq5s5q5fs=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/gratitude_rectangle3.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			osOwkW4QK9dZZQUqgv5MbSOO5xIqZrDFV06flz6UXNQ=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/gratitude_rectangle4.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			0mQu/6zH6glJ9KYtjS8ECDmtxUJqQ5bhPsHSq9b4hKw=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/assets/grounded_mind.png</key>
@@ -3185,7 +3262,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			6VqB7/izQwWtoo13TdZfKOte/rQ9hqucTUJHNWtqFo0=
+			K7g34WPRJZAU7pYnHkrdelMTVGMPrPLMsD5Nl+ffzNc=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
@@ -3220,7 +3297,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			JiGrCmWPMzNHYwehDGF2x1Ka4YuVrwk3ni0yQZoKFi8=
+			96X14mxgZyLL61GkSSWFMvQLRZmvgtGHzkaEZO63qv8=
 			</data>
 		</dict>
 		<key>Frameworks/Flutter.framework/Headers/Flutter.h</key>
@@ -3409,7 +3486,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			7DB8ptgIKB2Q6ilayhLw1RjIaurTPGv0Umt20x3PqJQ=
+			rqSMSB1YsZcFGDqaEgjdZOv9a5EdX20ynsHuZYI9xM0=
 			</data>
 		</dict>
 		<key>Frameworks/shared_preferences_foundation.framework/shared_preferences_foundation_privacy.bundle/Info.plist</key>
@@ -3444,7 +3521,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			L6DN+CJO5ZvweVjEdtsua+whH/YvmPH5iozqCd0TArU=
+			YAyRGjvVWwTuF5n9OgD+w+oj5mHeQZr7be69Dr2T2gs=
 			</data>
 		</dict>
 		<key>Frameworks/sqflite_darwin.framework/sqflite_darwin_privacy.bundle/Info.plist</key>
@@ -3577,14 +3654,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			wguCUXh07jzXrtiZTLL6xsKNaESa3dbQhOZYhfnK6s4=
+			pl7Ijj9JE9sVa83c8gldi9Ex7SM51Vn/UyZHMwHJ3yk=
 			</data>
 		</dict>
 		<key>__preview.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			YWZwvBjkDMG+isYZ7+PfanHqREGSBm8SgMRXKdIpICE=
+			KDfxKnIB9ue53lbMxMPmo4AdpTgxTLjL41tOzyHRXds=
 			</data>
 		</dict>
 		<key>permission_handler_apple_privacy.bundle/Info.plist</key>

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:gratefull_panda/Database/category_db.dart';
 import 'package:gratefull_panda/Home/RitualFour/ritual_four_category_screen.dart';
-import 'package:gratefull_panda/Home/RitualFour/ritual_four_intro_screen.dart';
+
 import 'package:gratefull_panda/Models/category.dart';
 import 'package:gratefull_panda/constant/color_constant.dart';
 
@@ -124,7 +124,7 @@ class _RitulFourExploreScreenState extends State<RitulFourExploreScreen> {
 
                   prefixIcon: Padding(
                     padding: const EdgeInsets.all(12),
-                  child: SizedBox(
+                    child: SizedBox(
                       width: 24,
                       height: 24,
                       child: Image.asset(
