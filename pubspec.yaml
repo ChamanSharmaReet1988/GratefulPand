@@ -1,0 +1,395 @@
+name: gratefull_panda
+description: "A new Flutter project."
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number is used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+# In Windows, build-name is used as the major, minor, and patch parts
+# of the product and file versions while build-number is used as the build suffix.
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.10.1
+
+# Dependencies specify other packages that your package needs in order to work.
+# To automatically upgrade your package dependencies to the latest versions
+# consider running `flutter pub upgrade --major-versions`. Alternatively,
+# dependencies can be manually updated by changing the version numbers below to
+# the latest version available on pub.dev. To see which dependencies have newer
+# versions available, run `flutter pub outdated`.
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.8
+  shared_preferences:
+   ^2.2.2
+  permission_handler: ^11.3.0
+  sqflite: ^2.3.3
+  path: ^1.9.0
+  intl: ^0.19.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # The "flutter_lints" package below contains a set of recommended lints to
+  # encourage good coding practices. The lint set provided by the package is
+  # activated in the `analysis_options.yaml` file located at the root of your
+  # package. See that file for information about deactivating specific lint
+  # rules and activating additional ones.
+  flutter_lints: ^6.0.0
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter packages.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+     - assets/panda.png
+     - assets/elements.png
+     - assets/home.png
+     - assets/gratitude.png
+     - assets/Affirmation.png
+     - assets/vision.png
+     - assets/affirmationFilled.png
+     - assets/arrow-right.png
+     - assets/graoundingImg.png
+     - assets/gratefulPanda.png
+     - assets/iAm.png
+     - assets/lines.png
+     - assets/menuHome.png
+     - assets/multiplication-sign.png
+     - assets/RightSideFilledArrow.png
+     - assets/ThinkingFromLeft.png
+     - assets/thinkingFromright.png
+     - assets/thnaksImg.png
+     - assets/todaysGratituideimg.png
+     - assets/Union.png
+     - assets/refameYourThoughts.png
+     - assets/energy.png
+     - assets/timer.png
+     - assets/victory-finger.png
+     - assets/weight.png
+     - assets/height.png
+     - assets/pandaWithBackground.png
+     - assets/friends.png
+     - assets/ritulOpening.png
+     - assets/arrow-right-White.png
+     - assets/arrow-left.png
+     - assets/panda_bubble.png
+     - assets/panda_square_shape.png
+     - assets/ritualThreeIOpeningImg.png
+     - assets/AffirmationOpening.png   
+     - assets/played.png   
+     - assets/healtcare.png     
+     - assets/affermationselectedImg.png  
+     - assets/menu-square.png 
+     - assets/accept_yourself.png
+     - assets/acceptance.png
+     - assets/attract_love.png
+     - assets/be_mindful.png
+     - assets/boundaries_balance.png
+     - assets/breath_awareness.png
+     - assets/cherish_people.png
+     - assets/confidence.png
+     - assets/contentment.png
+     - assets/creativity_play.png
+     - assets/embrace_aging.png
+     - assets/embrace_body.png
+     - assets/embrace_failure.png
+     - assets/enjoy_present.png
+     - assets/everyday_abundance.png
+     - assets/faith_surrender.png
+     - assets/family.png
+     - assets/feel_blessed.png
+     - assets/fight_grief.png
+     - assets/find_happiness.png
+     - assets/fitness.png
+     - assets/focus_discipline.png
+     - assets/for_couples.png 
+     - assets/forgive_self.png
+     - assets/forgiveness.png
+     - assets/friendship_bonds.png
+     - assets/good_parents.png
+     - assets/grounded_mind.png
+     - assets/handle_depression.png
+     - assets/handle_overthinking.png
+     - assets/handling_failure.png
+     - assets/home_sanctuary.png
+     - assets/hope_possibility.png
+     - assets/inner_peace.png
+     - assets/inner_stillness.png
+     - assets/law_of_attraction.png
+     - assets/learning_curiosity.png
+     - assets/let_go.png
+     - assets/letting_go.png
+     - assets/love_for_others.png
+     - assets/love_for_self.png
+     - assets/love.png
+     - assets/manifest_career.png
+     - assets/manifest_dreams.png
+     - assets/manifest_friends.png
+     - assets/manifest_goals.png
+     - assets/manifest_love.png
+     - assets/manifest_money.png
+     - assets/manifest_purpose.png
+     - assets/manifest.png
+     - assets/mental_health.png
+     - assets/momentum_action.png
+     - assets/money_stability.png
+     - assets/nature_world.png
+     - assets/overcome_relationships.png
+     - assets/overcome_trauma.png
+     - assets/peaceful_body.png
+     - assets/people_kindness.png
+     - assets/practice_gratitude.png
+     - assets/purpose_meaning.png
+     - assets/recovery_rest.png
+     - assets/self_belief.png
+     - assets/self_care.png
+     - assets/self_growth.png
+     - assets/self_healing.png
+     - assets/self_love.png
+     - assets/self-doubt.png
+     - assets/simple_joys.png
+     - assets/slow_ mornings.png
+     - assets/stop_addiction.png
+     - assets/stop_overthinking.png
+     - assets/strength_courage.png
+     - assets/stress_anxiety.png
+     - assets/think_positive.png
+     - assets/trust_in_process.png
+     - assets/work_contribution.png
+     - assets/search.png
+     - assets/digital-clock.png
+     - assets/premiumBtnImg.png
+     - assets/premium.png
+     - assets/iAMOpening.png
+     - assets/cross.png
+     - assets/tic.png
+     - assets/back.png  
+     - assets/onboardingfourbackground.png
+     - assets/refresh.png
+     - assets/play.png
+     - assets/onboardingBackgroundScreen.png
+     - assets/onboardingPanda.png
+     - assets/uncheck.png
+     - assets/check.png
+     - assets/onbordingPandaImage.png
+     - assets/backgroundShadow.png
+     - assets/onboardingBubblethinkingImage.png
+     - assets/vector.png
+     - assets/sunrise.png
+     - assets/sun.png
+     - assets/moon.png
+     - assets/unselectedcircle.png
+     - assets/checkcircle.png
+     - assets/backgroungimage_onboarding11.png
+     - assets/arrow30.png
+     - assets/probenefits1.png
+     - assets/probenefits2.png 
+     - assets/probenefits3.png
+     - assets/probenefits4.png
+     - assets/probenefits5.png
+     - assets/probenefits6.png
+     - assets/probenefits7.png
+     - assets/notification.png
+     - assets/settings.png
+     - assets/prouserbackground.png
+     - assets/crossblack.png
+     - assets/subscriptionImage.png
+     - assets/access.png
+     - assets/crown.png
+     - assets/square-unlock.png
+     - assets/ritualfivethumb.png
+     - assets/ritual5key.png
+     - assets/ritualfivebackgroundimage.png
+     - assets/weight_scale.png
+     - assets/tape.png
+     - assets/premiumColor.png
+     - assets/dataBackup.png
+     - assets/yoga.png
+     - assets/scienceBehind.png
+     - assets/reminder.png
+     - assets/facelock.png
+     - assets/star.png
+     - assets/policy.png
+     - assets/termsAndCondition.png
+     - assets/FAQ.png
+     - assets/logout.png
+     - assets/googleIcon.png
+     - assets/appleIcon.png
+     - assets/switchoff.png
+     - assets/switchon.png
+     - assets/dropUp.png
+     - assets/dropDown.png
+     - assets/arrow-right_rounded.png
+     - assets/underline.png
+     - assets/adaptability.png
+     - assets/share.png
+     - assets/heart_unselected.png
+     - assets/heart_selected.png
+     - assets/doublearrow.png
+     - assets/audio/settle-male.mp3
+     - assets/audio/settle-female.mp3
+     - assets/audio/breath-in-male.mp3
+     - assets/audio/breath-in-female.mp3
+     - assets/audio/breath-out-male.mp3
+     - assets/audio/breath-out-female.mp3
+     - assets/audio/begin-male.mp3
+     - assets/audio/begin-female.mp3
+     - assets/fav.png
+     - assets/mic.png
+     - assets/pause.png
+     - assets/settings_ritual_four.png
+     - assets/mic_ritual_settings.png
+     - assets/music.png
+     - assets/arrow_right_black.png
+     - assets/repeat.png
+     - assets/ritual_four_settings_pause.png
+     - assets/plus-sign-circle.png
+     - assets/arrow-right-yellow.png
+     - assets/uncheckmark-circle.png
+     - assets/checkmark-circle.png
+     - assets/favorite_image.png
+     - assets/noAffirmation.png
+     - assets/favselected.png
+     - assets/fav_affirmation.png
+     - assets/delete.png
+     - assets/affirmation_save.png
+     - assets/visions.png
+     - assets/Rectangle1.png
+     - assets/Rectangle2.png
+     - assets/visionExample1.png
+     - assets/visionExample2.png
+     - assets/visionExample3.png
+     - assets/visionExample4.png
+     - assets/camera.png
+     - assets/color.png 
+     - assets/tic_black.png
+     - assets/checkmark-circle-blur.png
+     - assets/checkmark-circle-dark.png
+     - assets/checkmark-circle-white.png
+     - assets/gratitude_rectangle1.png
+     - assets/gratitude_rectangle2.png
+     - assets/gratitude_rectangle3.png
+     - assets/gratitude_rectangle4.png
+
+
+  fonts:
+    - family: Nunito
+      fonts:
+        - asset: assets/fonts/nunito/Nunito-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/nunito/Nunito-ExtraLightItalic.ttf
+          weight: 200
+          style: italic
+
+        - asset: assets/fonts/nunito/Nunito-Light.ttf
+          weight: 300
+        - asset: assets/fonts/nunito/Nunito-LightItalic.ttf
+          weight: 300
+          style: italic
+
+        - asset: assets/fonts/nunito/Nunito-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/nunito/Nunito-Italic.ttf
+          weight: 400
+          style: italic
+
+        - asset: assets/fonts/nunito/Nunito-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/nunito/Nunito-MediumItalic.ttf
+          weight: 500
+          style: italic
+
+        - asset: assets/fonts/nunito/Nunito-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/nunito/Nunito-SemiBoldItalic.ttf
+          weight: 600
+          style: italic
+
+        - asset: assets/fonts/nunito/Nunito-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/nunito/Nunito-BoldItalic.ttf
+          weight: 700
+          style: italic
+
+        - asset: assets/fonts/nunito/Nunito-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/nunito/Nunito-ExtraBoldItalic.ttf
+          weight: 800
+          style: italic
+
+        - asset: assets/fonts/nunito/Nunito-Black.ttf
+          weight: 900
+        - asset: assets/fonts/nunito/Nunito-BlackItalic.ttf
+          weight: 900
+          style: italic
+
+    - family: Outfit
+      fonts:
+        - asset: assets/fonts/outfit/Outfit-Thin.ttf
+          weight: 100
+        - asset: assets/fonts/outfit/Outfit-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/outfit/Outfit-Light.ttf
+          weight: 300
+        - asset: assets/fonts/outfit/Outfit-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/outfit/Outfit-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/outfit/Outfit-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/outfit/Outfit-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/outfit/Outfit-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/outfit/Outfit-Black.ttf
+          weight: 900
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/to/resolution-aware-images
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/to/asset-from-package
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/to/font-from-package
