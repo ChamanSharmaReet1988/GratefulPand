@@ -294,6 +294,10 @@ flutter:
      - assets/gratitude_rectangle2.png
      - assets/gratitude_rectangle3.png
      - assets/gratitude_rectangle4.png
+     - assets/thumbs-up.png
+     - assets/gartitude_fill.png
+     - assets/thanks_fill.png
+     - assets/voice.png
 
 
   fonts:

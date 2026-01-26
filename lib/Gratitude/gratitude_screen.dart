@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:gratefull_panda/Constant/color_constant.dart';
 import 'package:gratefull_panda/Database/category_db.dart';
@@ -57,104 +56,114 @@ class _GratitudeScreenState extends State<GratitudeScreen> {
     return Scaffold(
       backgroundColor: AppColors.splashBackgroundColor,
 
-      body: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.only(top: 60),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    child: _buildMenuIcon(),
-                  ),
-                  const SizedBox(height: 24),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Container(
-                      height: 52,
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      decoration: ShapeDecoration(
-                        color: Colors.white.withOpacity(0.40),
-                        shape: RoundedRectangleBorder(
-                          side: const BorderSide(width: 2, color: Colors.white),
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                      ),
-                      child: Row(
-                        children: [
-                          SizedBox(
-                            width: 22,
-                            height: 22,
-                            child: Image.asset("assets/search.png"),
-                          ),
-                          const SizedBox(width: 12),
-                          Expanded(
-                            child: TextField(
-                              controller: _searchController,
-                              textAlignVertical: TextAlignVertical.center,
-                              decoration: const InputDecoration(
-                                hintText: 'Search',
-                                hintStyle: TextStyle(
-                                  color: Color(0xFFA7A7A7),
-                                  fontSize: 16,
-                                  fontFamily: 'Outfit',
-                                  fontWeight: FontWeight.w400,
-                                ),
-                                border: InputBorder.none,
-                                contentPadding: EdgeInsets.symmetric(
-                                  horizontal: 0,
-                                  vertical: 12,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+      body: Stack(
+      children: [
+        CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 60),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      child: _buildMenuIcon(),
                     ),
-                  ),
-                  const SizedBox(height: 24),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: buildWeeklyCalendar(),
-                  ),
-
-                  const SizedBox(height: 24),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: buildPromptOfTheDayCard(),
-                  ),
-
-                  const SizedBox(height: 24),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: buildTodayPromptCard(),
-                  ),
-
-                  const SizedBox(height: 24),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 4),
-                    child: buildGratitudeCard(),
-                  ),
-
-                  const SizedBox(height: 150),
-
-                  
-                ]
-              )
-            )
-          )
-        ]
-      )
+                    const SizedBox(height: 24),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: buildWeeklyCalendar(),
+                    ),
+                    const SizedBox(height: 24),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: buildPromptOfTheDayCard(),
+                    ),
+                    const SizedBox(height: 24),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: buildAffirmationList(),
+                    ),
+                    const SizedBox(height: 24),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: buildTodayPromptCard(),
+                    ),
+                    const SizedBox(height: 24),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 4),
+                      child: buildGratitudeCard(),
+                    ),
+                    const SizedBox(height: 110),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+        buildFloatingGratitudeButton(),
+        ],
+      ),
     );
   }
 
+  Widget buildFloatingGratitudeButton() {
+  return Positioned(
+    bottom: 120,
+    right: 20,
+    child: GestureDetector(
+      onTap: () {
+        print("Express Gratitude tapped");
+      },
+      child: Container(
+        height: 40,
+        padding: const EdgeInsets.all(8),
+        decoration: ShapeDecoration(
+          color: const Color(0xFFF2E3D0),
+          shape: RoundedRectangleBorder(
+            side: const BorderSide(width: 1.5, color: Color(0xFFC07021)),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          shadows: const [
+            BoxShadow(
+              color: Color(0x99000000),
+              offset: Offset(1, 3),
+              blurRadius: 0,
+            ),
+          ],
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Image.asset(
+              "assets/gartitude_fill.png",   
+              width: 20,
+              height: 20,
+              fit: BoxFit.contain,
+            ),
+            const SizedBox(width: 8),
+            const Text(
+              'Express Gratitude',
+              style: TextStyle(
+                color: Color(0xFFBE752B),
+                fontSize: 16,
+                fontFamily: 'Outfit',
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+}
+
   Widget buildGratitudeCard() {
   return Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 16), // 16px from screen edges
+    padding: const EdgeInsets.symmetric(horizontal: 16), 
     child: Container(
-      width: double.infinity, // takes all available width
+      width: double.infinity, 
       padding: const EdgeInsets.all(16),
       decoration: ShapeDecoration(
         color: const Color(0xFFFFF5E0),
@@ -174,7 +183,6 @@ class _GratitudeScreenState extends State<GratitudeScreen> {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Emoji
           const Text(
             '🐼',
             style: TextStyle(
@@ -185,7 +193,6 @@ class _GratitudeScreenState extends State<GratitudeScreen> {
             ),
           ),
           const SizedBox(height: 8),
-          // Date row
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -203,12 +210,16 @@ class _GratitudeScreenState extends State<GratitudeScreen> {
                 height: 24,
                 clipBehavior: Clip.antiAlias,
                 decoration: const BoxDecoration(),
-                child: Stack(),
+                child: Image.asset(
+                  "assets/voice.png",
+                  width: 24,
+                  height: 24,
+                  fit: BoxFit.contain,
+                ),
               ),
             ],
           ),
           const SizedBox(height: 8),
-          // Prompt & User answer
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
@@ -234,7 +245,6 @@ class _GratitudeScreenState extends State<GratitudeScreen> {
             ],
           ),
           const SizedBox(height: 12),
-          // Gratitude Images (2x2)
           buildGratitudeImages(),
         ],
       ),
@@ -242,13 +252,11 @@ class _GratitudeScreenState extends State<GratitudeScreen> {
   );
 }
 
-/// 2x2 Gratitude Image Grid using local assets
 Widget buildGratitudeImages() {
   return Column(
     mainAxisSize: MainAxisSize.min,
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      // First row
       Row(
         children: [
           Expanded(
@@ -264,7 +272,6 @@ Widget buildGratitudeImages() {
               borderWidth: 3,
             ),
           ),
-          // const SizedBox(width: 8),
           Expanded(
             flex: 2,
             child: _gratitudeImage(
@@ -281,8 +288,7 @@ Widget buildGratitudeImages() {
           ),
         ],
       ),
-      // const SizedBox(height: 8),
-      // Second row
+      
       Row(
         children: [
           Expanded(
@@ -299,7 +305,6 @@ Widget buildGratitudeImages() {
               padding: 8,
             ),
           ),
-          // const SizedBox(width: 8),
           Expanded(
             flex: 3,
             child: _gratitudeImage(
@@ -319,7 +324,6 @@ Widget buildGratitudeImages() {
   );
 }
 
-/// Helper widget for each gratitude image
 Widget _gratitudeImage(
   String assetPath, {
   required BorderRadius borderRadius,
@@ -344,6 +348,98 @@ Widget _gratitudeImage(
     ),
   );
 }
+  
+  Widget buildAffirmationList() {
+  return ListView.builder(
+    padding: EdgeInsets.zero, 
+    shrinkWrap: true,
+    physics: const NeverScrollableScrollPhysics(),
+    itemCount: dummyAffirmations.length,
+    itemBuilder: (context, index) {
+      final item = dummyAffirmations[index];
+
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 6),
+        child: Container(
+          width: double.infinity,
+          padding: const EdgeInsets.all(16),
+          decoration: ShapeDecoration(
+            color: const Color(0xFFFFF5E0),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            shadows: const [
+              BoxShadow(
+                color: Color(0x3F000000),
+                offset: Offset(1, 3),
+                blurRadius: 0,
+              )
+            ],
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
+                children: [
+                  Image.asset(
+                    item.imagePath,
+                    width: 30,
+                    height: 30,
+                    fit: BoxFit.contain,
+                  ),
+
+                  const Spacer(),
+
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    decoration: ShapeDecoration(
+                      color: const Color(0xFFF2E3D0),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    child: Text(
+                      item.tag,
+                      style: const TextStyle(
+                        color: Color(0xFFB59575),
+                        fontSize: 14,
+                        fontFamily: 'Outfit',
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+              const SizedBox(height: 8),
+              Text(
+                item.day,
+                style: const TextStyle(
+                  color: Color(0xFF60512C),
+                  fontSize: 12,
+                  fontFamily: 'Outfit',
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+
+              const SizedBox(height: 8),
+              Text(
+                item.text,
+                style: const TextStyle(
+                  color: Color(0xFF60512C),
+                  fontSize: 16,
+                  fontFamily: 'Outfit',
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    },
+  );
+}
 
   Widget _buildMenuIcon() {
     return GestureDetector(
@@ -357,7 +453,7 @@ Widget _gratitudeImage(
     );
   }
 
-  Widget buildWeeklyCalendar() {
+ Widget buildWeeklyCalendar() {
   final DateTime today = DateTime.now();
 
   final List<DateTime> days = List.generate(
@@ -365,44 +461,43 @@ Widget _gratitudeImage(
     (index) => today.add(Duration(days: index - 3)),
   );
 
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-      decoration: ShapeDecoration(
-        color: const Color(0xFFF2E3D0),
-        shape: RoundedRectangleBorder(
-          side: const BorderSide(width: 1.5, color: Color(0xFFC07021)),
-          borderRadius: BorderRadius.circular(16),
+  return Container(
+    width: double.infinity,
+    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+    decoration: ShapeDecoration(
+      color: const Color(0xFFF2E3D0),
+      shape: RoundedRectangleBorder(
+        side: const BorderSide(width: 1.5, color: Color(0xFFC07021)),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      shadows: const [
+        BoxShadow(
+          color: Color(0x99000000),
+          offset: Offset(1, 3),
         ),
-        shadows: const [
-          BoxShadow(
-            color: Color(0x99000000),
-            offset: Offset(1, 3),
-          ),
-        ],
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: days.map((date) {
-          final bool isToday =
-              date.day == today.day &&
-              date.month == today.month &&
-              date.year == today.year;
+      ],
+    ),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: days.map((date) {
+        final bool isToday =
+            date.day == today.day &&
+            date.month == today.month &&
+            date.year == today.year;
 
-          final bool isFuture = date.isAfter(today);
+        final bool isFuture = date.isAfter(today);
 
-          return _dayItem(
-            day: DateFormat('E').format(date),
-            date: date.day.toString(),
-            isToday: isToday,
-            isFuture: isFuture,
-          );
-        }).toList(),
-      ),
-    );
-  }
-
+        return _dayItem(
+          day: DateFormat('E').format(date),
+          date: date.day.toString(),
+          isToday: isToday,
+          isFuture: isFuture,
+        );
+      }).toList(),
+    ),
+  );
+}
   Widget _dayItem({
     required String day,
     required String date,
@@ -508,7 +603,6 @@ Widget _gratitudeImage(
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Top row
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -543,8 +637,6 @@ Widget _gratitudeImage(
         ),
 
         const SizedBox(height: 12),
-
-        // Quote text
         const Text(
           '“Remember one quality, habit, or small choice that helped you keep going.”',
           style: TextStyle(
@@ -556,8 +648,6 @@ Widget _gratitudeImage(
         ),
 
         const SizedBox(height: 12),
-
-        // Inner prompt box
         Container(
           width: double.infinity,
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
@@ -602,7 +692,6 @@ Widget buildTodayPromptCard() {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: const [
-        // Emoji
         Text(
           '💬',
           style: TextStyle(
@@ -614,8 +703,6 @@ Widget buildTodayPromptCard() {
         ),
 
         SizedBox(height: 8),
-
-        // Title
         Text(
           'TODAY',
           style: TextStyle(
@@ -627,8 +714,6 @@ Widget buildTodayPromptCard() {
         ),
 
         SizedBox(height: 8),
-
-        // Description
         Text(
           'Think of a time you comforted or encouraged yourself when no one else could.',
           style: TextStyle(
@@ -644,3 +729,40 @@ Widget buildTodayPromptCard() {
 }
 
 }
+
+class AffirmationModel {
+  final String tag;
+  final String day;
+  final String text;
+  final String imagePath; 
+
+  AffirmationModel({
+    required this.tag,
+    required this.day,
+    required this.text,
+    required this.imagePath,
+  });
+}
+
+final List<AffirmationModel> dummyAffirmations = [
+  AffirmationModel(
+    tag: "I am",
+    day: "TODAY",
+    text: "I am learning to see my thoughts, not become them.",
+    imagePath: "assets/thumbs-up.png",
+  ),
+  AffirmationModel(
+    tag: "Gratitude ritual",
+    day: "YESTERDAY",
+    text: "I am learning to see my thoughts, not become them.",
+    imagePath: "assets/gartitude_fill.png",
+  ),
+  AffirmationModel(
+    tag: "Three Thank-Yous",
+    day: "MONDAY",
+    text: "1. Thank you, God\n"
+          "2. Thank you, Universe\n"
+          "3. Thank you, Mom",
+    imagePath: "assets/thumbs-up.png",
+  ),
+];
