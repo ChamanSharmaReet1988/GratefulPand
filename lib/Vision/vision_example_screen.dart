@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:gratefull_panda/Common/common.dart';
 import 'package:gratefull_panda/Constant/color_constant.dart';
+import 'package:gratefull_panda/Constant/constant.dart';
 import 'package:gratefull_panda/Database/vision_data_db.dart';
 import 'package:gratefull_panda/Database/vision_db.dart';
 import 'package:gratefull_panda/Models/vision.dart';
 import 'package:gratefull_panda/Models/vision_data.dart';
+import 'package:gratefull_panda/Vision/vision_board.dart';
 
 class VisionExampleScreen extends StatefulWidget {
   const VisionExampleScreen({super.key});
@@ -102,10 +105,23 @@ class _VisionExampleScreenState extends State<VisionExampleScreen> {
               separatorBuilder: (_, __) => const SizedBox(height: 24),
               itemBuilder: (context, index) {
                 final item = visionExamples[index];
-                return VisionCollage(vision: item);
+                return InkWell(
+                  borderRadius: BorderRadius.circular(24),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => VisionBoardScreen(
+                          vision: item,
+                          isFromExample: true,
+                        ),
+                      ),
+                    );
+                  },
+                  child: VisionCollage(vision: item),
+                );
               },
             ),
-
             const SizedBox(height: 52),
           ],
         ),
@@ -121,9 +137,7 @@ class VisionCollage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<VisionData>>(
-      future: VisionDataDb.instance.getVisionDataByVisionId(
-        vision.id.toString(),
-      ),
+      future: VisionDataDb.instance.getVisionCollageItems(vision.id.toString()),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
@@ -140,87 +154,204 @@ class VisionCollage extends StatelessWidget {
         final count = items.length;
         switch (count) {
           case 1:
-            return _single(items[0]);
+          //return _single(items[0]);
           case 2:
-            return _two(items);
+          //return _two(items);
           case 3:
-            return _three(items);
+          //return _three(items);
           case 4:
           default:
-            return _four(items);
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                FourCollageCard(list: items),
+                const SizedBox(height: 10),
+                Text(
+                  vision.name,
+                  style: TextStyle(
+                    color: Color(0xFF342D18),
+                    fontSize: 16,
+                    fontFamily: 'Outfit',
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  vision.name == "Home & Cozy Lifestyle"
+                      ? 'Dream home, decor, cozy routines, environment you want'
+                      : "Identity, confidence, self-love, inner strength.",
+                  style: TextStyle(
+                    color: Color(0xB2342D18),
+                    fontSize: 14,
+                    fontFamily: 'Outfit',
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ],
+            );
         }
       },
     );
   }
+}
 
-  Widget _single(VisionData item) => _tile(item, height: 200);
-  Widget _two(List<VisionData> items) => Row(
-    children: [
-      Expanded(child: _tile(items[0], height: 160)),
-      const SizedBox(width: 8),
-      Expanded(child: _tile(items[1], height: 160)),
-    ],
-  );
-  Widget _three(List<VisionData> items) => Column(
-    children: [
-      Row(
-        children: [
-          Expanded(child: _tile(items[0], height: 120)),
-          const SizedBox(width: 8),
-          Expanded(child: _tile(items[1], height: 120)),
-        ],
-      ),
-      const SizedBox(height: 8),
-      _tile(items[2], height: 120),
-    ],
-  );
-  Widget _four(List<VisionData> items) => Column(
-    children: [
-      Row(
-        children: [
-          Expanded(child: _tile(items[0], height: 120)),
-          const SizedBox(width: 8),
-          Expanded(child: _tile(items[1], height: 120)),
-        ],
-      ),
-      const SizedBox(height: 8),
-      Row(
-        children: [
-          Expanded(child: _tile(items[2], height: 120)),
-          const SizedBox(width: 8),
-          Expanded(child: _tile(items[3], height: 120)),
-        ],
-      ),
-    ],
-  );
+// ignore: must_be_immutable
+class FourCollageCard extends StatelessWidget {
+  const FourCollageCard({super.key, required this.list});
+  final List<VisionData> list;
 
-  Widget _tile(VisionData item, {required double height}) {
+  @override
+  Widget build(BuildContext context) {
     return Container(
-      height: height,
-      padding: item.type == 'text' ? const EdgeInsets.all(12) : EdgeInsets.zero,
+      padding: const EdgeInsets.all(4),
       decoration: BoxDecoration(
-        color: item.type == 'text'
-            ? const Color(0xFFD9D9FF)
-            : Colors.transparent,
-        borderRadius: BorderRadius.circular(14),
-        image: item.type == 'image'
-            ? DecorationImage(
-                image: AssetImage(item.value ?? ""),
-                fit: BoxFit.cover,
-              )
-            : null,
+        color: Color(0xFFFFF5E0),
+        borderRadius: BorderRadius.circular(12),
       ),
-      child: item.type == 'text'
-          ? Text(
-              item.value ?? "",
-              style: const TextStyle(
-                fontSize: 13,
-                height: 1.3,
-                color: Color(0xFF372D17),
-                fontFamily: 'Podkova',
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Expanded(
+                flex: 2,
+                child: list[0].type == 'image'
+                    ? _imageCard(list[0].value ?? '', 12, 0, 0, 0)
+                    : _textCard(
+                        list[0].value ?? '',
+                        fromHex(list[0].color ?? 'D6DDB6'),
+                        12,
+                        0,
+                        0,
+                        0,
+                      ),
               ),
-            )
-          : null,
+              const SizedBox(width: 4),
+
+              Expanded(
+                flex: 1,
+                child: list[1].type == 'image'
+                    ? _imageCard(list[1].value ?? '', 0, 12, 0, 0)
+                    : _textCard(
+                        list[1].value ?? '',
+                        fromHex(list[0].color ?? 'D6DDB6'),
+                        0,
+                        12,
+                        0,
+                        0,
+                      ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 4),
+          Row(
+            children: [
+              Expanded(
+                flex: 1,
+                child: list[2].type == 'image'
+                    ? _imageCard(list[2].value ?? '', 0, 0, 12, 0)
+                    : _textCard(
+                        list[2].value ?? '',
+                        fromHex(list[2].color ?? 'D6DDB6'),
+                        0,
+                        0,
+                        12,
+                        0,
+                      ),
+              ),
+              const SizedBox(width: 4),
+
+              Expanded(
+                flex: 2,
+                child: list[3].type == 'image'
+                    ? _imageCard(list[3].value ?? '', 0, 0, 0, 12)
+                    : _textCard(
+                        list[3].value ?? '',
+                        fromHex(list[3].color ?? 'D6DDB6'),
+                        0,
+                        0,
+                        0,
+                        12,
+                      ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _imageCard(
+    String imageUrl,
+    double topLeft,
+    double topRight,
+    double bottomLeft,
+    double bottomRight,
+  ) {
+    return ClipRRect(
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(topLeft),
+        topRight: Radius.circular(topRight),
+        bottomLeft: Radius.circular(bottomLeft),
+        bottomRight: Radius.circular(bottomRight),
+      ),
+      child: Image.network(
+        imageBaseUrl + imageUrl,
+        height: 120,
+        width: double.infinity,
+        fit: BoxFit.cover,
+        loadingBuilder: (context, child, loadingProgress) {
+          if (loadingProgress == null) return child;
+          return Container(
+            height: 120,
+            color: Colors.grey.shade200,
+            child: const Center(
+              child: CircularProgressIndicator(strokeWidth: 2),
+            ),
+          );
+        },
+        errorBuilder: (context, error, stackTrace) {
+          return Container(
+            height: 120,
+            color: Colors.grey.shade300,
+            child: const Icon(Icons.image_not_supported, size: 40),
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _textCard(
+    String text,
+    Color bgColor,
+    double topLeft,
+    double topRight,
+    double bottomLeft,
+    double bottomRight,
+  ) {
+    return Container(
+      height: 120,
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: bgColor,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(topLeft),
+          topRight: Radius.circular(topRight),
+          bottomLeft: Radius.circular(bottomLeft),
+          bottomRight: Radius.circular(bottomRight),
+        ),
+      ),
+      child: Center(
+        child: Text(
+          text,
+          textAlign: TextAlign.left,
+          style: TextStyle(
+            color: const Color(0xFF372D17),
+            fontSize: 12,
+            fontFamily: 'Podkova',
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+      ),
     );
   }
 }

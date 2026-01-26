@@ -75,7 +75,7 @@ class _AddTextScreenState extends State<AddTextScreen> {
             ),
           ),
 
-          SizedBox(height: 200),
+          SizedBox(height: 240),
           Expanded(
             child: Center(
               child: Padding(
@@ -115,8 +115,14 @@ class _AddTextScreenState extends State<AddTextScreen> {
             ),
           ),
 
-          Padding(
-            padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
+          Container(
+            padding: const EdgeInsets.only(
+              top: 16,
+              left: 24,
+              right: 24,
+              bottom: 32,
+            ),
+            decoration: BoxDecoration(color: const Color(0xFFFFF5E0)),
             child: Row(
               children: [
                 Container(
@@ -244,7 +250,6 @@ class _AddTextScreenState extends State<AddTextScreen> {
               ],
             ),
           ),
-          SizedBox(height: 30),
         ],
       ),
     );
