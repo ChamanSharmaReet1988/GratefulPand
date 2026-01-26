@@ -295,19 +295,16 @@ flutter:
      - assets/gratitude_rectangle2.png
      - assets/gratitude_rectangle3.png
      - assets/gratitude_rectangle4.png
-
      - assets/thumbs-up.png
      - assets/gartitude_fill.png
      - assets/thanks_fill.png
      - assets/voice.png
      - assets/addImage.png
- 
      - assets/play_brown.png
      - assets/folder.png
      - assets/text.png
      - assets/settings_vision_play.png
  
-
   fonts:
     - family: Nunito
       fonts:
