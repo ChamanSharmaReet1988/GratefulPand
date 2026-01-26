@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:gratefull_panda/Common/initial_data_sync.dart';
 import 'package:gratefull_panda/Constant/constant.dart';
 import 'package:gratefull_panda/Database/vision_data_db.dart';
 import 'package:gratefull_panda/Models/vision.dart';
@@ -124,13 +127,31 @@ class _VisionPlayTextState extends State<VisionPlayText> {
                       (visionDataList[currentVision].type ?? "") == "image")
                     SizedBox(
                       width: MediaQuery.of(context).size.width,
-                      child: Image.network(
-                        (widget.isFromExample ?? false)
-                            ? imageBaseUrl +
-                                  visionDataList[currentVision].value!
-                            : visionDataList[currentVision].value!,
-                        fit: BoxFit.contain,
-                      ),
+                      child: (widget.isFromExample ?? false)
+                          ? Image.network(
+                              imageBaseUrl +
+                                  visionDataList[currentVision].value!,
+                              fit: BoxFit.contain,
+                            )
+                          : Image.file(
+                              File(
+                                '${AppPaths.documentsDir}/${visionDataList[currentVision].value!}',
+                              ),
+                              height: 110,
+                              width: double.infinity,
+                              fit: BoxFit.cover,
+                              gaplessPlayback: true,
+                              errorBuilder: (context, error, stackTrace) {
+                                return Container(
+                                  height: 110,
+                                  color: Colors.grey.shade300,
+                                  child: const Icon(
+                                    Icons.image_not_supported,
+                                    size: 40,
+                                  ),
+                                );
+                              },
+                            ),
                     )
                   else
                     Text(

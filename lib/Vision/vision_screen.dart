@@ -88,6 +88,7 @@ class _VisionScreenState extends State<VisionScreen> {
                   child: Center(child: _buildEmptyState(context)),
                 ),
               ),
+            SizedBox(height: 64),
           ],
         ),
       ),
@@ -291,55 +292,68 @@ class VisionBlock {
   VisionBlock({this.image, this.text, required this.backgroundColor});
 }
 
-class VisionCollageForData extends StatelessWidget {
+class VisionCollageForData extends StatefulWidget {
   final Vision vision;
 
   const VisionCollageForData({super.key, required this.vision});
 
   @override
+  State<VisionCollageForData> createState() => _VisionCollageForDataState();
+}
+
+class _VisionCollageForDataState extends State<VisionCollageForData>
+    with AutomaticKeepAliveClientMixin {
+  late Future<List<VisionData>> _future;
+
+  @override
+  void initState() {
+    super.initState();
+    _future = VisionDataDb.instance.getVisionCollageItems(
+      widget.vision.id.toString(),
+    );
+  }
+
+  @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
+
     return FutureBuilder<List<VisionData>>(
-      future: VisionDataDb.instance.getVisionCollageItems(vision.id.toString()),
+      future: _future,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator());
+          return const SizedBox(
+            height: 140,
+            child: Center(child: CircularProgressIndicator()),
+          );
         }
         if (snapshot.hasError) {
           return Center(child: Text('Error: ${snapshot.error}'));
         }
         final items = snapshot.data ?? [];
 
-        if (items.isEmpty) {
+        if (items.length < 4) {
           return const SizedBox();
         }
 
-        final count = items.length;
-        switch (count) {
-          case 1:
-            return SizedBox();
-          case 2:
-            return SizedBox();
-          case 3:
-            return SizedBox();
-          case 4:
-          default:
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                FourCollageCard(list: items),
-                const SizedBox(height: 10),
-                Text(
-                  vision.name,
-                  style: TextStyle(
-                    color: Color(0xFF342D18),
-                    fontSize: 16,
-                    fontFamily: 'Outfit',
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ],
-            );
-        }
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            FourCollageCard(list: items),
+            const SizedBox(height: 10),
+            Text(
+              widget.vision.name,
+              style: const TextStyle(
+                color: Color(0xFF342D18),
+                fontSize: 16,
+                fontFamily: 'Outfit',
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ],
+        );
       },
     );
   }
@@ -449,6 +463,7 @@ class FourCollageCard extends StatelessWidget {
         height: 110,
         width: double.infinity,
         fit: BoxFit.cover,
+        gaplessPlayback: true,
         errorBuilder: (context, error, stackTrace) {
           return Container(
             height: 110,

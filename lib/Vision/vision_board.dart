@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:gratefull_panda/Common/common.dart';
+import 'package:gratefull_panda/Common/initial_data_sync.dart';
 import 'package:gratefull_panda/Constant/constant.dart';
 import 'package:gratefull_panda/Database/vision_data_db.dart';
 import 'package:gratefull_panda/Models/vision.dart';
@@ -74,7 +77,7 @@ class _VisionBoardScreenState extends State<VisionBoardScreen> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 0),
               child: GridView.builder(
-                padding: EdgeInsets.zero, // 👈 removes top (and all) margin
+                padding: EdgeInsets.zero,
                 shrinkWrap: true,
                 itemCount: visionDataList!.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -92,7 +95,10 @@ class _VisionBoardScreenState extends State<VisionBoardScreen> {
               ),
             ),
           ),
-          VisionBottomBar(vision: widget.vision),
+          VisionBottomBar(
+            vision: widget.vision,
+            isFromExample: widget.isFromExample,
+          ),
         ],
       ),
     );
@@ -109,38 +115,22 @@ class VisionGridItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: item.type == 'text' ? const EdgeInsets.all(6) : EdgeInsets.zero,
-      decoration: BoxDecoration(color: fromHex(item.color ?? '#FFFFFF')),
+      decoration: item.type == 'text'
+          ? BoxDecoration(color: fromHex(item.color ?? '#FFFFFF'))
+          : BoxDecoration(color: Color(0xFFFFFFFF)),
       child: item.type == 'image'
-          ? ClipRRect(
-              child: Image.network(
-                (isFromExample ?? false)
-                    ? imageBaseUrl + item.value!
-                    : item.value!,
-
-                width: double.infinity,
-                fit: BoxFit.cover,
-                loadingBuilder: (context, child, loadingProgress) {
-                  if (loadingProgress == null) return child;
-                  return Container(
-                    color: Colors.grey.shade200,
-                    child: const Center(
-                      child: CircularProgressIndicator(strokeWidth: 2),
-                    ),
-                  );
-                },
-                errorBuilder: (context, error, stackTrace) {
-                  return Container(
-                    color: Colors.grey.shade300,
-                    child: const Icon(Icons.image_not_supported, size: 40),
-                  );
-                },
-              ),
-            )
+          ? (isFromExample == true
+                ? Image.network(imageBaseUrl + item.value!, fit: BoxFit.cover)
+                : Image.file(
+                    File('${AppPaths.documentsDir}/${item.value!}'),
+                    fit: BoxFit.cover,
+                    gaplessPlayback: true,
+                  ))
           : Center(
               child: Text(
                 item.value!,
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Color(0xFF372D17),
                   fontSize: 12,
                   fontFamily: 'Outfit',
@@ -153,8 +143,9 @@ class VisionGridItem extends StatelessWidget {
 }
 
 class VisionBottomBar extends StatelessWidget {
-  const VisionBottomBar({super.key, this.vision});
+  const VisionBottomBar({super.key, this.vision, this.isFromExample});
   final Vision? vision;
+  final bool? isFromExample;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -235,8 +226,10 @@ class VisionBottomBar extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>
-                        VisionPlayText(vision: vision, isFromExample: true),
+                    builder: (context) => VisionPlayText(
+                      vision: vision,
+                      isFromExample: isFromExample,
+                    ),
                   ),
                 );
               },
