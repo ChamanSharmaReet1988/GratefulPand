@@ -1,7 +1,8 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:gratefull_panda/Common/common.dart';
+import 'package:gratefull_panda/Common/initial_data_sync.dart';
 import 'package:gratefull_panda/Constant/color_constant.dart';
-import 'package:gratefull_panda/Constant/constant.dart';
 import 'package:gratefull_panda/Database/vision_data_db.dart';
 import 'package:gratefull_panda/Database/vision_db.dart';
 import 'package:gratefull_panda/Models/vision.dart';
@@ -9,7 +10,6 @@ import 'package:gratefull_panda/Models/vision_data.dart';
 import 'package:gratefull_panda/Settings/settings_view.dart';
 import 'package:gratefull_panda/Vision/create_new_vision.dart';
 import 'package:gratefull_panda/Vision/vision_board.dart';
-
 import 'package:gratefull_panda/Vision/vision_example_screen.dart';
 
 class VisionScreen extends StatefulWidget {
@@ -56,30 +56,30 @@ class _VisionScreenState extends State<VisionScreen> {
             ),
 
             if (visionList.isNotEmpty)
-              ListView.separated(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                padding: const EdgeInsets.all(16),
-                itemCount: visionList.length,
-                separatorBuilder: (_, __) => const SizedBox(height: 24),
-                itemBuilder: (context, index) {
-                  final item = visionList[index];
-                  return InkWell(
-                    borderRadius: BorderRadius.circular(24),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => VisionBoardScreen(
-                            vision: item,
-                            isFromExample: false,
+              Expanded(
+                child: ListView.separated(
+                  padding: const EdgeInsets.all(16),
+                  itemCount: visionList.length,
+                  separatorBuilder: (_, __) => const SizedBox(height: 24),
+                  itemBuilder: (context, index) {
+                    final item = visionList[index];
+                    return InkWell(
+                      borderRadius: BorderRadius.circular(24),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => VisionBoardScreen(
+                              vision: item,
+                              isFromExample: false,
+                            ),
                           ),
-                        ),
-                      );
-                    },
-                    child: VisionCollageForData(vision: item),
-                  );
-                },
+                        );
+                      },
+                      child: VisionCollageForData(vision: item),
+                    );
+                  },
+                ),
               )
             else
               Expanded(
@@ -293,6 +293,7 @@ class VisionBlock {
 
 class VisionCollageForData extends StatelessWidget {
   final Vision vision;
+
   const VisionCollageForData({super.key, required this.vision});
 
   @override
@@ -315,11 +316,11 @@ class VisionCollageForData extends StatelessWidget {
         final count = items.length;
         switch (count) {
           case 1:
-          //return _single(items[0]);
+            return SizedBox();
           case 2:
-          //return _two(items);
+            return SizedBox();
           case 3:
-          //return _three(items);
+            return SizedBox();
           case 4:
           default:
             return Column(
@@ -382,7 +383,7 @@ class FourCollageCard extends StatelessWidget {
                     ? _imageCard(list[1].value ?? '', 0, 12, 0, 0)
                     : _textCard(
                         list[1].value ?? '',
-                        fromHex(list[0].color ?? 'D6DDB6'),
+                        fromHex(list[1].color ?? 'D6DDB6'),
                         0,
                         12,
                         0,
@@ -443,21 +444,11 @@ class FourCollageCard extends StatelessWidget {
         bottomLeft: Radius.circular(bottomLeft),
         bottomRight: Radius.circular(bottomRight),
       ),
-      child: Image.network(
-        imageBaseUrl + imageUrl,
+      child: Image.file(
+        File('${AppPaths.documentsDir}/$imageUrl'),
         height: 110,
         width: double.infinity,
         fit: BoxFit.cover,
-        loadingBuilder: (context, child, loadingProgress) {
-          if (loadingProgress == null) return child;
-          return Container(
-            height: 120,
-            color: Colors.grey.shade200,
-            child: const Center(
-              child: CircularProgressIndicator(strokeWidth: 2),
-            ),
-          );
-        },
         errorBuilder: (context, error, stackTrace) {
           return Container(
             height: 110,

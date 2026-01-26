@@ -8,7 +8,7 @@ import 'package:gratefull_panda/utils/user_preferences.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await syncInitialDataToDB();
-
+  await AppPaths.init();
   final isDone = await UserPreferences.isOnboardingDone();
 
   runApp(

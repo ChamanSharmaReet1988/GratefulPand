@@ -1,5 +1,6 @@
 import 'package:gratefull_panda/Common/data_source.dart';
 import 'package:gratefull_panda/Database/db_helper.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
 Future<void> syncInitialDataToDB() async {
@@ -70,4 +71,13 @@ Future<bool> hasAnyCategory() async {
 
   final count = Sqflite.firstIntValue(result) ?? 0;
   return count > 0;
+}
+
+class AppPaths {
+  static late String documentsDir;
+
+  static Future<void> init() async {
+    final dir = await getApplicationDocumentsDirectory();
+    documentsDir = dir.path;
+  }
 }
