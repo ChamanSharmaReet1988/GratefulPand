@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gratefull_panda/Affirmation/affirmation_screen.dart';
+import 'package:gratefull_panda/Gratitude/gratitude_guide_screen.dart';
 import 'package:gratefull_panda/Gratitude/gratitude_screen.dart';
 import 'package:gratefull_panda/Home/home_screen.dart';
 import 'package:gratefull_panda/Vision/vision_screen.dart';
@@ -17,6 +18,7 @@ class _TabBarScreenState extends State<TabBarScreen> {
   final List<Widget> _screens = [
     const HomeScreen(),
     const GratitudeScreen(),
+    // const GratitudeGuideScreen(),
     const AffirmationScreen(),
     const VisionScreen(),
   ];

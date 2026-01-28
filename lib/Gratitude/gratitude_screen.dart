@@ -66,9 +66,18 @@ class _GratitudeScreenState extends State<GratitudeScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                      child: _buildMenuIcon(),
+                    Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                          child: _buildMenuIcon(),
+                        ),
+                        Spacer(),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                          child: buildFloatingGratitudeButton(),
+                        ),
+                      ],
                     ),
                     const SizedBox(height: 24),
                     Padding(
@@ -102,7 +111,6 @@ class _GratitudeScreenState extends State<GratitudeScreen> {
             ),
           ],
         ),
-        buildFloatingGratitudeButton(),
         ],
       ),
     );

@@ -15,14 +15,14 @@ class CreateNewVisionScreen extends StatefulWidget {
 
 class _CreateNewVisionScreenState extends State<CreateNewVisionScreen> {
   late TextEditingController nameController;
-  String pandaName = "";
+  String userName = "";
   Vision initialVision = Vision(name: "");
 
   @override
   void initState() {
     super.initState();
     nameController = TextEditingController();
-    _loadPandaName();
+    _loadUserName();
   }
 
   @override
@@ -31,14 +31,15 @@ class _CreateNewVisionScreenState extends State<CreateNewVisionScreen> {
     super.dispose();
   }
 
-  Future<void> _loadPandaName() async {
-    final savedPandaName = await UserPreferences.getPandaName();
-    if (!mounted) return;
+  Future<void> _loadUserName() async {
+  final savedUserName = await UserPreferences.getUserName();
 
-    setState(() {
-      pandaName = savedPandaName ?? "";
-    });
-  }
+  if (!mounted) return;
+
+  setState(() {
+    userName = savedUserName ?? "";
+  });
+}
 
   @override
   Widget build(BuildContext context) {
@@ -138,7 +139,7 @@ class _CreateNewVisionScreenState extends State<CreateNewVisionScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          "Hello $pandaName",
+                          "Hello $userName",
                           style: TextStyle(
                             color: const Color(0xFF342D18),
                             fontSize: 20,
@@ -169,7 +170,7 @@ class _CreateNewVisionScreenState extends State<CreateNewVisionScreen> {
               child: Text(
                 'Name of your board',
                 style: TextStyle(
-                  color: Color(0xFF60512C) /* Dark-400 */,
+                  color: Color(0xFF60512C),
                   fontSize: 12,
                   fontFamily: 'Outfit',
                   fontWeight: FontWeight.w400,

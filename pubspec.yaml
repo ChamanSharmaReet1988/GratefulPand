@@ -305,6 +305,8 @@ flutter:
      - assets/folder.png
      - assets/text.png
      - assets/settings_vision_play.png
+     - assets/sparkles.png
+     - assets/flag.png
  
   fonts:
     - family: Nunito
