@@ -1,6 +1,8 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:gratefull_panda/Common/common.dart';
 import 'package:gratefull_panda/Common/initial_data_sync.dart';
 import 'package:gratefull_panda/Constant/constant.dart';
 import 'package:gratefull_panda/Database/vision_data_db.dart';
@@ -22,11 +24,51 @@ class _VisionPlayTextState extends State<VisionPlayText> {
   late TextEditingController nameController;
   int currentVision = 0;
   List<VisionData> visionDataList = [];
+  Color backgroundColor = AppColors.splashBackgroundColor;
+  Timer? _timer;
+
+  void startTimer() {
+    stopTimer();
+
+    _timer = Timer.periodic(const Duration(seconds: 5), (timer) {
+      setState(() {
+        if (currentVision >= visionDataList.length - 1) {
+          currentVision = 0;
+        } else {
+          currentVision++;
+        }
+        if (visionDataList.isNotEmpty &&
+            (visionDataList[currentVision].type ?? "") == "text") {
+          setState(() {
+            backgroundColor = fromHex(
+              visionDataList[currentVision].color ?? "",
+            );
+          });
+        } else {
+          setState(() {
+            backgroundColor = AppColors.splashBackgroundColor;
+          });
+        }
+      });
+    });
+  }
+
+  void stopTimer() {
+    _timer?.cancel();
+    _timer = null;
+  }
 
   @override
   void initState() {
     super.initState();
     loadVisionData();
+    startTimer();
+  }
+
+  @override
+  void dispose() {
+    stopTimer();
+    super.dispose();
   }
 
   Future<void> loadVisionData() async {
@@ -35,6 +77,10 @@ class _VisionPlayTextState extends State<VisionPlayText> {
     );
     setState(() {
       visionDataList = items;
+      if (visionDataList.isNotEmpty &&
+          (visionDataList[0].type ?? "") == "text") {
+        backgroundColor = fromHex(visionDataList[0].color ?? "");
+      }
     });
   }
 
@@ -55,12 +101,11 @@ class _VisionPlayTextState extends State<VisionPlayText> {
   }
 
   void pauseAction() {}
-  void favAction() {}
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.splashBackgroundColor,
+      backgroundColor: backgroundColor,
       bottomNavigationBar: SafeArea(
         top: false,
         child: Padding(
@@ -94,7 +139,7 @@ class _VisionPlayTextState extends State<VisionPlayText> {
       ),
 
       body: Scaffold(
-        backgroundColor: AppColors.splashBackgroundColor,
+        backgroundColor: backgroundColor,
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -137,8 +182,7 @@ class _VisionPlayTextState extends State<VisionPlayText> {
                               File(
                                 '${AppPaths.documentsDir}/${visionDataList[currentVision].value!}',
                               ),
-                              height: 110,
-                              width: double.infinity,
+
                               fit: BoxFit.cover,
                               gaplessPlayback: true,
                               errorBuilder: (context, error, stackTrace) {

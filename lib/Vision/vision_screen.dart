@@ -49,7 +49,7 @@ class _VisionScreenState extends State<VisionScreen> {
                   _buildMenuIcon(),
                   if (visionList.isNotEmpty) ...[
                     Spacer(),
-                    createNewBoardButton(context),
+                    createNewBoardButton(),
                   ],
                 ],
               ),
@@ -74,7 +74,9 @@ class _VisionScreenState extends State<VisionScreen> {
                               isFromExample: false,
                             ),
                           ),
-                        );
+                        ).then((val) {
+                          loadVisionData();
+                        });
                       },
                       child: VisionCollageForData(vision: item),
                     );
@@ -183,7 +185,9 @@ class _VisionScreenState extends State<VisionScreen> {
                     MaterialPageRoute(
                       builder: (_) => const CreateNewVisionScreen(),
                     ),
-                  );
+                  ).then((val) {
+                    loadVisionData();
+                  });
                 },
                 child: Container(
                   height: 48,
@@ -229,59 +233,61 @@ class _VisionScreenState extends State<VisionScreen> {
       child: Image.asset('assets/menuHome.png', height: 40, width: 40),
     );
   }
-}
 
-Widget createNewBoardButton(BuildContext context) {
-  return GestureDetector(
-    onTap: () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (_) => const CreateNewVisionScreen()),
-      );
-    },
-    child: Container(
-      height: 40,
-      padding: const EdgeInsets.symmetric(horizontal: 12),
-      decoration: BoxDecoration(
-        color: const Color(0xFFF2E3D0),
-        border: Border.all(width: 1.5, color: const Color(0xFFC07021)),
-        borderRadius: BorderRadius.circular(8),
-        boxShadow: const [
-          BoxShadow(
-            color: Color(0x99000000),
-            offset: Offset(1, 3),
-            blurRadius: 0,
-          ),
-        ],
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            width: 20,
-            height: 20,
-            decoration: const BoxDecoration(shape: BoxShape.circle),
-            child: ClipOval(
-              child: Image.asset(
-                'assets/plus-sign-circle.png',
-                fit: BoxFit.cover,
+  Widget createNewBoardButton() {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => const CreateNewVisionScreen()),
+        ).then((val) {
+          loadVisionData();
+        });
+      },
+      child: Container(
+        height: 40,
+        padding: const EdgeInsets.symmetric(horizontal: 12),
+        decoration: BoxDecoration(
+          color: const Color(0xFFF2E3D0),
+          border: Border.all(width: 1.5, color: const Color(0xFFC07021)),
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: const [
+            BoxShadow(
+              color: Color(0x99000000),
+              offset: Offset(1, 3),
+              blurRadius: 0,
+            ),
+          ],
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: 20,
+              height: 20,
+              decoration: const BoxDecoration(shape: BoxShape.circle),
+              child: ClipOval(
+                child: Image.asset(
+                  'assets/plus-sign-circle.png',
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-          ),
-          const SizedBox(width: 8),
-          const Text(
-            'Create New Board',
-            style: TextStyle(
-              color: Color(0xFFC07021),
-              fontSize: 16,
-              fontFamily: 'Outfit',
-              fontWeight: FontWeight.w400,
+            const SizedBox(width: 8),
+            const Text(
+              'Create New Board',
+              style: TextStyle(
+                color: Color(0xFFC07021),
+                fontSize: 16,
+                fontFamily: 'Outfit',
+                fontWeight: FontWeight.w400,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
-    ),
-  );
+    );
+  }
 }
 
 class VisionBlock {
@@ -334,26 +340,77 @@ class _VisionCollageForDataState extends State<VisionCollageForData>
         }
         final items = snapshot.data ?? [];
 
-        if (items.length < 4) {
-          return const SizedBox();
-        }
-
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            FourCollageCard(list: items),
-            const SizedBox(height: 10),
-            Text(
-              widget.vision.name,
-              style: const TextStyle(
-                color: Color(0xFF342D18),
-                fontSize: 16,
-                fontFamily: 'Outfit',
-                fontWeight: FontWeight.w500,
+        if (items.length >= 4) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              FourCollageCard(list: items),
+              const SizedBox(height: 10),
+              Text(
+                widget.vision.name,
+                style: const TextStyle(
+                  color: Color(0xFF342D18),
+                  fontSize: 16,
+                  fontFamily: 'Outfit',
+                  fontWeight: FontWeight.w500,
+                ),
               ),
-            ),
-          ],
-        );
+            ],
+          );
+        } else if (items.length == 3) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ThreeCollageCard(list: items),
+              const SizedBox(height: 10),
+              Text(
+                widget.vision.name,
+                style: const TextStyle(
+                  color: Color(0xFF342D18),
+                  fontSize: 16,
+                  fontFamily: 'Outfit',
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          );
+        } else if (items.length == 2) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TwoCollageCard(list: items),
+              const SizedBox(height: 10),
+              Text(
+                widget.vision.name,
+                style: const TextStyle(
+                  color: Color(0xFF342D18),
+                  fontSize: 16,
+                  fontFamily: 'Outfit',
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          );
+        } else if (items.length == 1) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              OneCollageCard(list: items),
+              const SizedBox(height: 10),
+              Text(
+                widget.vision.name,
+                style: const TextStyle(
+                  color: Color(0xFF342D18),
+                  fontSize: 16,
+                  fontFamily: 'Outfit',
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          );
+        } else {
+          return const SizedBox(height: 0);
+        }
       },
     );
   }
@@ -443,70 +500,226 @@ class FourCollageCard extends StatelessWidget {
       ),
     );
   }
+}
 
-  Widget _imageCard(
-    String imageUrl,
-    double topLeft,
-    double topRight,
-    double bottomLeft,
-    double bottomRight,
-  ) {
-    return ClipRRect(
+class ThreeCollageCard extends StatelessWidget {
+  const ThreeCollageCard({super.key, required this.list});
+  final List<VisionData> list;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 220,
+      padding: const EdgeInsets.all(4),
+      decoration: BoxDecoration(
+        color: const Color(0xFFFFF5E0),
+        borderRadius: BorderRadius.circular(14),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch, // 🔥 IMPORTANT
+        children: [
+          Expanded(
+            flex: 2,
+            child: list[0].type == 'image'
+                ? _imageCard(list[0].value ?? '', 12, 0, 12, 0)
+                : _textCard(
+                    list[0].value ?? '',
+                    fromHex(list[0].color ?? 'D6DDB6'),
+                    12,
+                    0,
+                    12,
+                    0,
+                  ),
+          ),
+
+          const SizedBox(width: 4),
+
+          /// RIGHT STACK
+          Expanded(
+            flex: 1,
+            child: Column(
+              children: [
+                Expanded(
+                  child: list[1].type == 'image'
+                      ? _imageCard(list[1].value ?? '', 0, 12, 0, 0)
+                      : _textCard(
+                          list[1].value ?? '',
+                          fromHex(list[1].color ?? 'D6DDB6'),
+                          0,
+                          12,
+                          0,
+                          0,
+                        ),
+                ),
+                const SizedBox(height: 4),
+                Expanded(
+                  child: list[2].type == 'image'
+                      ? _imageCard(list[2].value ?? '', 0, 0, 0, 12)
+                      : _textCard(
+                          list[2].value ?? '',
+                          fromHex(list[2].color ?? 'D6DDB6'),
+                          0,
+                          0,
+                          0,
+                          12,
+                        ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class TwoCollageCard extends StatelessWidget {
+  const TwoCollageCard({super.key, required this.list});
+
+  final List<VisionData> list;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 220,
+      padding: const EdgeInsets.all(4),
+      decoration: BoxDecoration(
+        color: const Color(0xFFFFF5E0),
+        borderRadius: BorderRadius.circular(14),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Expanded(
+            child: list[0].type == 'image'
+                ? _imageCard(list[0].value ?? '', 12, 0, 12, 0)
+                : _textCard(
+                    list[0].value ?? '',
+                    fromHex(list[0].color ?? 'D6DDB6'),
+                    12,
+                    0,
+                    12,
+                    0,
+                  ),
+          ),
+
+          const SizedBox(width: 4),
+
+          Expanded(
+            child: list[1].type == 'image'
+                ? _imageCard(list[1].value ?? '', 0, 12, 0, 12)
+                : _textCard(
+                    list[1].value ?? '',
+                    fromHex(list[1].color ?? 'D6DDB6'),
+                    0,
+                    12,
+                    0,
+                    12,
+                  ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class OneCollageCard extends StatelessWidget {
+  const OneCollageCard({super.key, required this.list});
+
+  final List<VisionData> list;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 220,
+      padding: const EdgeInsets.all(4),
+      decoration: BoxDecoration(
+        color: const Color(0xFFFFF5E0),
+        borderRadius: BorderRadius.circular(14),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Expanded(
+            child: list[0].type == 'image'
+                ? _imageCard(list[0].value ?? '', 12, 12, 12, 12)
+                : _textCard(
+                    list[0].value ?? '',
+                    fromHex(list[0].color ?? 'D6DDB6'),
+                    12,
+                    12,
+                    12,
+                    12,
+                  ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+Widget _imageCard(
+  String imageUrl,
+  double topLeft,
+  double topRight,
+  double bottomLeft,
+  double bottomRight,
+) {
+  return ClipRRect(
+    borderRadius: BorderRadius.only(
+      topLeft: Radius.circular(topLeft),
+      topRight: Radius.circular(topRight),
+      bottomLeft: Radius.circular(bottomLeft),
+      bottomRight: Radius.circular(bottomRight),
+    ),
+    child: Image.file(
+      File('${AppPaths.documentsDir}/$imageUrl'),
+      height: 110,
+      width: double.infinity,
+      fit: BoxFit.cover,
+      gaplessPlayback: true,
+      errorBuilder: (context, error, stackTrace) {
+        return Container(
+          height: 110,
+          color: Colors.grey.shade300,
+          child: const Icon(Icons.image_not_supported, size: 40),
+        );
+      },
+    ),
+  );
+}
+
+Widget _textCard(
+  String text,
+  Color bgColor,
+  double topLeft,
+  double topRight,
+  double bottomLeft,
+  double bottomRight,
+) {
+  return Container(
+    height: 110,
+    padding: const EdgeInsets.all(14),
+    decoration: BoxDecoration(
+      color: bgColor,
       borderRadius: BorderRadius.only(
         topLeft: Radius.circular(topLeft),
         topRight: Radius.circular(topRight),
         bottomLeft: Radius.circular(bottomLeft),
         bottomRight: Radius.circular(bottomRight),
       ),
-      child: Image.file(
-        File('${AppPaths.documentsDir}/$imageUrl'),
-        height: 110,
-        width: double.infinity,
-        fit: BoxFit.cover,
-        gaplessPlayback: true,
-        errorBuilder: (context, error, stackTrace) {
-          return Container(
-            height: 110,
-            color: Colors.grey.shade300,
-            child: const Icon(Icons.image_not_supported, size: 40),
-          );
-        },
-      ),
-    );
-  }
-
-  Widget _textCard(
-    String text,
-    Color bgColor,
-    double topLeft,
-    double topRight,
-    double bottomLeft,
-    double bottomRight,
-  ) {
-    return Container(
-      height: 110,
-      padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(
-        color: bgColor,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(topLeft),
-          topRight: Radius.circular(topRight),
-          bottomLeft: Radius.circular(bottomLeft),
-          bottomRight: Radius.circular(bottomRight),
+    ),
+    child: Center(
+      child: Text(
+        text,
+        textAlign: TextAlign.left,
+        style: TextStyle(
+          color: const Color(0xFF372D17),
+          fontSize: 12,
+          fontFamily: 'Podkova',
+          fontWeight: FontWeight.w400,
         ),
       ),
-      child: Center(
-        child: Text(
-          text,
-          textAlign: TextAlign.left,
-          style: TextStyle(
-            color: const Color(0xFF372D17),
-            fontSize: 12,
-            fontFamily: 'Podkova',
-            fontWeight: FontWeight.w400,
-          ),
-        ),
-      ),
-    );
-  }
+    ),
+  );
 }
