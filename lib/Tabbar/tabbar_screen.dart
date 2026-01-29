@@ -19,6 +19,7 @@ class _TabBarScreenState extends State<TabBarScreen> {
     const HomeScreen(),
     const GratitudeScreen(),
     // const GratitudeGuideScreen(),
+    // const GratitudeMyentryScreen(),
     const AffirmationScreen(),
     const VisionScreen(),
   ];

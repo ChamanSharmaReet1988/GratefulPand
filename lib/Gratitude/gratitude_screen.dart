@@ -80,6 +80,9 @@ class _GratitudeScreenState extends State<GratitudeScreen> {
                       ],
                     ),
                     const SizedBox(height: 24),
+                    buildSearchField(controller: _searchController),
+
+                    const SizedBox(height: 24),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: buildWeeklyCalendar(),
@@ -116,52 +119,99 @@ class _GratitudeScreenState extends State<GratitudeScreen> {
     );
   }
 
-  Widget buildFloatingGratitudeButton() {
-  return Positioned(
-    bottom: 120,
-    right: 20,
-    child: GestureDetector(
-      onTap: () {
-        print("Express Gratitude tapped");
-      },
-      child: Container(
-        height: 40,
-        padding: const EdgeInsets.all(8),
-        decoration: ShapeDecoration(
-          color: const Color(0xFFF2E3D0),
-          shape: RoundedRectangleBorder(
-            side: const BorderSide(width: 1.5, color: Color(0xFFC07021)),
-            borderRadius: BorderRadius.circular(8),
-          ),
-          shadows: const [
-            BoxShadow(
-              color: Color(0x99000000),
-              offset: Offset(1, 3),
-              blurRadius: 0,
-            ),
-          ],
+  Widget buildSearchField({
+  required TextEditingController controller,
+  String hintText = 'Search',
+  String iconPath = "assets/search.png",
+}) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 16),
+    child: Container(
+      height: 52,
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      decoration: ShapeDecoration(
+        color: Colors.white.withOpacity(0.40),
+        shape: RoundedRectangleBorder(
+          side: const BorderSide(width: 2, color: Colors.white),
+          borderRadius: BorderRadius.circular(16),
         ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Image.asset(
-              "assets/gartitude_fill.png",   
-              width: 20,
-              height: 20,
-              fit: BoxFit.contain,
-            ),
-            const SizedBox(width: 8),
-            const Text(
-              'Express Gratitude',
-              style: TextStyle(
-                color: Color(0xFFBE752B),
-                fontSize: 16,
-                fontFamily: 'Outfit',
-                fontWeight: FontWeight.w400,
+      ),
+      child: Row(
+        children: [
+          SizedBox(
+            width: 22,
+            height: 22,
+            child: Image.asset(iconPath),
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: TextField(
+              controller: controller,
+              textAlignVertical: TextAlignVertical.center,
+              decoration: InputDecoration(
+                hintText: hintText,
+                hintStyle: const TextStyle(
+                  color: Color(0xFFA7A7A7),
+                  fontSize: 16,
+                  fontFamily: 'Outfit',
+                  fontWeight: FontWeight.w400,
+                ),
+                border: InputBorder.none,
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 0,
+                  vertical: 12,
+                ),
               ),
             ),
-          ],
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+Widget buildFloatingGratitudeButton() {
+  return GestureDetector(
+    onTap: () {
+      print("Express Gratitude tapped");
+    },
+    child: Container(
+      height: 40,
+      padding: const EdgeInsets.all(8),
+      decoration: ShapeDecoration(
+        color: const Color(0xFFF2E3D0),
+        shape: RoundedRectangleBorder(
+          side: const BorderSide(width: 1.5, color: Color(0xFFC07021)),
+          borderRadius: BorderRadius.circular(8),
         ),
+        shadows: const [
+          BoxShadow(
+            color: Color(0x99000000),
+            offset: Offset(1, 3),
+            blurRadius: 0,
+          ),
+        ],
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Image.asset(
+            "assets/gartitude_fill.png",
+            width: 20,
+            height: 20,
+            fit: BoxFit.contain,
+          ),
+          const SizedBox(width: 8),
+          const Text(
+            'Express Gratitude',
+            style: TextStyle(
+              color: Color(0xFFBE752B),
+              fontSize: 16,
+              fontFamily: 'Outfit',
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+        ],
       ),
     ),
   );
@@ -547,15 +597,7 @@ Widget _gratitudeImage(
             ),
           )
         : null,
-        // decoration: 
-        // ShapeDecoration(
-        //     color: const Color(0xFFB68554),
-        //     shape: RoundedRectangleBorder(
-        //       side: const BorderSide(width: 1, color: Color(0xFFFFF5E0)),
-        //       borderRadius: BorderRadius.circular(12),
-        //     ),
-        //   ),
-        
+      
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
