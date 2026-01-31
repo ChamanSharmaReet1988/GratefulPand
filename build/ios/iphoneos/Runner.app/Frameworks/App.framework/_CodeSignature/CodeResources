@@ -10,7 +10,7 @@
 		</data>
 		<key>flutter_assets/AssetManifest.bin</key>
 		<data>
-		m3tKSAK/JKSMtAvArWvQABElGK8=
+		43WN0GcVH8pW3qE9RhTWshYv/9s=
 		</data>
 		<key>flutter_assets/FontManifest.json</key>
 		<data>
@@ -18,7 +18,7 @@
 		</data>
 		<key>flutter_assets/NOTICES.Z</key>
 		<data>
-		L9JBkY63rh3RdkitXZ+6xcx18Cs=
+		1/0cvpdCTp5qzKkA6VO9VVIxR/E=
 		</data>
 		<key>flutter_assets/NativeAssetsManifest.json</key>
 		<data>
@@ -552,6 +552,14 @@
 		<data>
 		8/0CNhGxl0PPaWsxQBUh8jU7WIs=
 		</data>
+		<key>flutter_assets/assets/horizontal-dot.png</key>
+		<data>
+		kKHX1oz2titLTD31bjRveYJgtHY=
+		</data>
+		<key>flutter_assets/assets/how-to-write-bubble.png</key>
+		<data>
+		ecxf2jQy5+nH8H8LQcnCizbTTf0=
+		</data>
 		<key>flutter_assets/assets/iAMOpening.png</key>
 		<data>
 		fjO9K9PxnQUovx63/IPiJ3ehQLo=
@@ -679,6 +687,10 @@
 		<key>flutter_assets/assets/nature_world.png</key>
 		<data>
 		KXaioRxuVTVueoOrVklCfxPEA/A=
+		</data>
+		<key>flutter_assets/assets/new_prompt.png</key>
+		<data>
+		vaMx0P26XDaHKdf/Obvs3hf4UrQ=
 		</data>
 		<key>flutter_assets/assets/noAffirmation.png</key>
 		<data>
@@ -832,6 +844,10 @@
 		<data>
 		rxs3zlTMQWw16FSPfXB0KioEUWE=
 		</data>
+		<key>flutter_assets/assets/remove-gratitude-card.png</key>
+		<data>
+		vaPMO8FOnrae0jxYb+CVHsosfmI=
+		</data>
 		<key>flutter_assets/assets/repeat.png</key>
 		<data>
 		vM7gNHdIzMhapnqRDd507HAprGo=
@@ -915,6 +931,10 @@
 		<key>flutter_assets/assets/slow_%20mornings.png</key>
 		<data>
 		cCpyu1bAqqa1MPUSFXDbw4AiPWQ=
+		</data>
+		<key>flutter_assets/assets/smile.png</key>
+		<data>
+		qmSF6h/1eFhGxNsMRu3cdkkwbxY=
 		</data>
 		<key>flutter_assets/assets/sparkles.png</key>
 		<data>
@@ -1094,7 +1114,7 @@
 		</data>
 		<key>flutter_assets/kernel_blob.bin</key>
 		<data>
-		GBGriH5403Nu+HgheeG/nZ65XtY=
+		6QRh7Xpelfl1xDp0cy11vhIXof4=
 		</data>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -1119,7 +1139,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			348TgBUNq/tr1DkEvCqkhZnfgIi83Gh4cUCj0UAgiXM=
+			EDmDfKp/p6PrDx6b3vjovzE5KMuOb1luWUN15V/Ql8E=
 			</data>
 		</dict>
 		<key>flutter_assets/FontManifest.json</key>
@@ -1133,7 +1153,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Vx1MXAiuhxilOX/WCkv9SS+7wNaWcThgMFD5QdyFQ1E=
+			ZadHmCEmCUIxzVcSctI/5n5CTzdG7n6/xLaBRYUP4ro=
 			</data>
 		</dict>
 		<key>flutter_assets/NativeAssetsManifest.json</key>
@@ -2067,6 +2087,20 @@
 			hyqWAF3NH2JLWQD4VTZ79u0HvLhiGJGGqe0PD/Ja93g=
 			</data>
 		</dict>
+		<key>flutter_assets/assets/horizontal-dot.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			xSzTjFmQySAPUoendqmvxEiRXAXo1waHTzTg20btEUo=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/how-to-write-bubble.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			vdBWnGBodnequDSX5sCx5aqpP0O54Jyn9BtS3Goa0LI=
+			</data>
+		</dict>
 		<key>flutter_assets/assets/iAMOpening.png</key>
 		<dict>
 			<key>hash2</key>
@@ -2289,6 +2323,13 @@
 			<key>hash2</key>
 			<data>
 			rqr0FkRA3X193JiwRFSWs01ycuWDISuS80CpS5YvTk4=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/new_prompt.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			IyiOZRfIcq9Y5+4+rFaMHAvhkeUG2qMioJKwj0U9eNk=
 			</data>
 		</dict>
 		<key>flutter_assets/assets/noAffirmation.png</key>
@@ -2557,6 +2598,13 @@
 			M7sA6oVSEC0KBXfj5veyRDGq/eTFceAvDy/a0jhy1Tw=
 			</data>
 		</dict>
+		<key>flutter_assets/assets/remove-gratitude-card.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			gHsGzNBp5NwtSB/9fiKm4DVNOGrORqdb2ajThXvjgfA=
+			</data>
+		</dict>
 		<key>flutter_assets/assets/repeat.png</key>
 		<dict>
 			<key>hash2</key>
@@ -2702,6 +2750,13 @@
 			<key>hash2</key>
 			<data>
 			RKf3T9mih8hIGiy6yPmldi9kz4EJ+uHvVVL3kdLUncw=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/smile.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			akWJyF0JeAJMzv5gClj/c+m6uFe264YMFBoHVz5yfZg=
 			</data>
 		</dict>
 		<key>flutter_assets/assets/sparkles.png</key>
@@ -3016,7 +3071,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			+ppqAMIrKUpYURIpFd6GRR2bg8uFZAma+uS7aZXL2cI=
+			woYDP0Adt5i+qZlYzKoBbBc/bzFyqky8haL39bi6PFQ=
 			</data>
 		</dict>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>

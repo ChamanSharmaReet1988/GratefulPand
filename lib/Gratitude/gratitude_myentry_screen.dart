@@ -89,8 +89,6 @@ class _GratitudeMyentryScreenState extends State<GratitudeMyentryScreen> {
     );
   }
 
-  // -------------------- UI Widgets --------------------
-
   Widget buildCurrentStreakCard() {
     return Container(
       padding: const EdgeInsets.all(12),

@@ -19,8 +19,6 @@ class _TabBarScreenState extends State<TabBarScreen> {
   final List<Widget> _screens = [
     const HomeScreen(),
     const GratitudeScreen(),
-    // const GratitudeGuideScreen(),
-    // const GratitudeMyentryScreen(),
     const AffirmationScreen(),
     const VisionScreen(),
   ];

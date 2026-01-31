@@ -3,7 +3,7 @@ import 'package:gratefull_panda/Constant/color_constant.dart';
 import 'package:gratefull_panda/Database/category_db.dart';
 import 'package:gratefull_panda/Models/category.dart';
 import 'package:gratefull_panda/Settings/settings_view.dart';
-import 'package:gratefull_panda/Gratitude/gratitude_myentry_screen.dart';
+import 'package:gratefull_panda/Gratitude/gratitude_writing_screen.dart';
 import 'package:intl/intl.dart';
 
 class GratitudeScreen extends StatefulWidget {
@@ -177,7 +177,7 @@ Widget buildFloatingGratitudeButton() {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const GratitudeMyentryScreen(),
+          builder: (context) => const GratitudeWritingScreen(),
         ),
       );
     },
